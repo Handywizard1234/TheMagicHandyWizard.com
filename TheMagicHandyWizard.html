@@ -32,7 +32,13 @@
       <h1>Service Inquiry Form</h1>
       <p>Please fill out the form below to send your inquiry directly to <strong>TheMagicHandyWizard@proton.me</strong>.</p>
 
-      <form id="inquiry-form" action="mailto:TheMagicHandyWizard@proton.me" method="post" enctype="text/plain">
+      <!-- Using FormSubmit to handle email delivery -->
+      <form id="inquiry-form" action="https://formsubmit.co/TheMagicHandyWizard@proton.me" method="POST">
+        <!-- Prevent spam submissions -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New Service Inquiry from TheMagicHandyWizard Website">
+        <input type="hidden" name="_template" value="table">
+
         <div>
           <label for="firstName">First Name</label>
           <input type="text" id="firstName" name="First Name" required>
@@ -88,8 +94,8 @@
     const thankYou = document.getElementById('thankyou-message');
 
     form.addEventListener('submit', function(event){
-      event.preventDefault();
       thankYou.style.display = 'block';
+      setTimeout(()=>{thankYou.style.display='none';},6000);
       form.reset();
     });
   </script>
