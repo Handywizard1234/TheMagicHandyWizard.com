@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TheMagicHandyWizard — Inquiry Form</title>
+  <style>
+    :root{--bg:#f4e7cf;--card:#fff;--accent:#0f1724;--muted:#6b6b6b;--primary:#0b74f0}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial;color:var(--accent);background:linear-gradient(180deg,var(--bg),#efe1c8);display:flex;min-height:100vh;align-items:center;justify-content:center;padding:32px}
+    .wrap{max-width:880px;width:100%;}
+    header{display:flex;align-items:center;gap:18px;margin-bottom:18px;justify-content:center}
+    .logo{font-weight:800;font-size:28px;letter-spacing:.6px}
+    .banner{background:#222;color:#f8f3e8;display:inline-block;padding:10px 18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+    .card{background:var(--card);padding:26px;border-radius:14px;box-shadow:0 10px 30px rgba(15,23,36,.12)}
+    form{display:grid;gap:14px}
+    label{font-weight:600}
+    input,select,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #ccc;font-family:inherit;font-size:15px}
+    button{background:var(--primary);color:#fff;border:none;padding:12px 20px;border-radius:10px;cursor:pointer;font-size:16px;font-weight:600;transition:background .3s}
+    button:hover{background:#095ec3}
+    footer{text-align:center;margin-top:18px;color:var(--muted);font-size:13px}
+    #thankyou-message{display:none;text-align:center;padding:20px;font-weight:600;color:green}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="banner logo">TheMagicHandyWizard</div>
+    </header>
+
+    <main class="card">
+      <h1>Service Inquiry Form</h1>
+      <p>Please fill out the form below to send your inquiry directly to <strong>TheMagicHandyWizard@proton.me</strong>.</p>
+
+      <form id="inquiry-form" action="mailto:TheMagicHandyWizard@proton.me" method="post" enctype="text/plain">
+        <div>
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="First Name" required>
+        </div>
+
+        <div>
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="Last Name" required>
+        </div>
+
+        <div>
+          <label for="date">Today's Date</label>
+          <input type="date" id="date" name="Date" required>
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="Email" required>
+        </div>
+
+        <div>
+          <label for="service">Service Requested</label>
+          <select id="service" name="Service" required>
+            <option value="">-- Please Select a Service --</option>
+            <option value="Lawn Service with personal equipment">Lawn Service with personal equipment</option>
+            <option value="Interior painting">Interior painting</option>
+            <option value="Exterior Painting">Exterior Painting</option>
+            <option value="Deep house Cleaning">Deep house Cleaning</option>
+            <option value="Magic Simple House Cleaning">Magic Simple House Cleaning</option>
+            <option value="Cleaning Trash Bins">Cleaning Trash Bins</option>
+            <option value="Window Washing">Window Washing</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="message">Additional Details (optional)</label>
+          <textarea id="message" name="Message" rows="5" placeholder="Describe your project or preferred schedule..."></textarea>
+        </div>
+
+        <button type="submit">Submit Inquiry</button>
+      </form>
+
+      <div id="thankyou-message">✅ Thank you! Your inquiry has been sent successfully.</div>
+
+      <footer>
+        © 2025 The Magic Handy Wizard — Your trusted wizard for cleaning & painting services.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const form = document.getElementById('inquiry-form');
+    const thankYou = document.getElementById('thankyou-message');
+
+    form.addEventListener('submit', function(event){
+      event.preventDefault();
+      thankYou.style.display = 'block';
+      form.reset();
+    });
+  </script>
+</body>
+</html>
